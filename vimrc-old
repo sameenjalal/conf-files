@@ -1,0 +1,18 @@
+set number
+set tabstop=4
+set shiftwidth=4
+set backspace=2
+syntax on
+set pastetoggle=<F2>
+set smartindent
+set incsearch
+set ignorecase
+set autoindent
+imap jj <Esc>
+filetype indent on
+nore ; :
+nore , ;
+set nocompatible
+set showcmd
+
+cmap w!! w !sudo tee >/dev/null %

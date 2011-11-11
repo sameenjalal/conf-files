@@ -23,11 +23,28 @@ DEFAULT_SESSION=awesome
 case $1 in
 awesome)
 	kmix --keepvisibility &
-	exec awesome &
-	sudo conky &
+	exec awesome
+	;;
+fluxbox)
+	exec fluxbox
+	;;
+startfluxbox)
+	exec startfluxbox
 	;;
 kde)
 	exec startkde
+	;;
+ratpoison)
+	exec usr/bin/ratpoison
+	;;
+openbox)
+	exec openbox
+	;;
+icewm)
+	exec icewm
+	;;
+blackbox)
+	exec blackbox
 	;;
 xfce4)
 	exec startxfce4
