@@ -46,56 +46,56 @@
 " }
 
 " Vim UI {
-    set tabpagemax=15 		" only show 15 tabs
-    set showmode 			" display the current mode
+    set tabpagemax=15		" only show 15 tabs
+    set showmode			" display the current mode
 
-	colorscheme jellybeans 	" Set the colorscheme
+	colorscheme jellybeans	" Set the colorscheme
 
-    set cursorline 					" highlight current line
-    hi cursorline guibg=#333333 	" highlight bg color of current line
-    hi CursorColumn guibg=#333333 	" highlight cursor
+    set cursorline					" highlight current line
+    hi cursorline guibg=#333333		" highlight bg color of current line
+    hi CursorColumn guibg=#333333	" highlight cursor
 	let &t_Co=256
 
 	if has('cmdline_info')
-		set ruler 											" show the ruler
-		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) 	" a ruler on steroids
+		set ruler											" show the ruler
+		set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%)	" a ruler on steroids
 	endif
 
     if has('statusline')
         set laststatus=2
 
 		" Broken down into easily includeable segments
-        set statusline=%<%f\ 						" Filename
-        set statusline+=%w%h%m%r 					" Options
-        " set statusline+=\ [%{&ff}/%Y] 			" filetype
-        set statusline+=\ [%{getcwd()}] 			" current dir
-        set statusline+=\ [A=\%03.3b/H=\%02.2B] 	" ASCII / Hexadecimal value of char
-        set statusline+=%=%-14.(%l,%c%V%)\ %p%% 	" Right aligned file nav info
+        set statusline=%<%f\						" Filename
+        set statusline+=%w%h%m%r					" Options
+        " set statusline+=\ [%{&ff}/%Y]				" filetype
+        set statusline+=\ [%{getcwd()}]				" current dir
+        set statusline+=\ [A=\%03.3b/H=\%02.2B]		" ASCII / Hexadecimal value of char
+        set statusline+=%=%-14.(%l,%c%V%)\ %p%%		" Right aligned file nav info
     endif
 
-    set nu 							" Line numbers on
-    set showmatch 					" show matching brackets/parenthesis
-    set incsearch 					" find as you type search
-    set hlsearch 					" highlight search terms
-    set ignorecase 					" case insensitive search
-    set wildmenu 					" show list instead of just completing
-    set wildmode=list:longest,full 	" comand <Tab> completion, list matches, then longest common part, then all.
-    set whichwrap=b,s,h,l,<,>,[,] 	" backspace and cursor keys wrap to
+    set nu							" Line numbers on
+    set showmatch					" show matching brackets/parenthesis
+    set incsearch					" find as you type search
+    set hlsearch					" highlight search terms
+    set ignorecase					" case insensitive search
+    set wildmenu					" show list instead of just completing
+    set wildmode=list:longest,full	" comand <Tab> completion, list matches, then longest common part, then all.
+    set whichwrap=b,s,h,l,<,>,[,]	" backspace and cursor keys wrap to
 
 	" Fold settings {
 		set foldmethod=indent		" fold based on indent
 		set foldnestmax=10			" deepest fold is 10 levels
 		set nofoldenable			" dont fold by default
-		" set foldenable 			" auto fold code
+		" set foldenable			" auto fold code
 		set foldlevel=1				" preference
 	" }
 
 	" Environment {
-		set nocompatible 			" Lets you not have to worry about old Vi bugs
-		filetype plugin indent on 	" Automatically detect file types.
-		syntax on 					" syntax highlighting
-		set mouse=a 				" automatically enable mouse usage
-		set autochdir 				" always switch to the current file directory.. Messes with some plugins, best left commented out
+		set nocompatible			" Lets you not have to worry about old Vi bugs
+		filetype plugin indent on	" Automatically detect file types.
+		syntax on					" syntax highlighting
+		set mouse=a					" automatically enable mouse usage
+		set autochdir				" always switch to the current file directory.. Messes with some plugins, best left commented out
 		scriptencoding utf-8
 		set smartindent
 		set smartcase
@@ -106,15 +106,15 @@
 		"" Remove trailing whitespaces and ^M chars
 		autocmd FileType c,cpp,java,php,js,python,twig,xml,yml autocmd BufWritePre <buffer> :call setline(1,map(getline(1,"$"),'substitute(v:val,"\\s\\+$","","")'))
 
-		" Set autowrite 			" automatically write a file when leaving a modified buffer
-		set history=2000 			" Store a ton of history (default is 20)
-		set spell 					" spell checking on
-		set number 					" Set numbers to show
-		set tabstop=4 				" Set tab to skip 4 spaces
+		" Set autowrite				" automatically write a file when leaving a modified buffer
+		set history=2000			" Store a ton of history (default is 20)
+		set spell					" spell checking on
+		set number					" Set numbers to show
+		set tabstop=4				" Set tab to skip 4 spaces
 		set shiftwidth=4
 		syntax on
 
-		set pastetoggle=<F2> 		" Press F2 to paste
+		set pastetoggle=<F2>		" Press F2 to paste
 		filetype indent on
 		filetype plugin on
 	" }
