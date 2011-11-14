@@ -45,47 +45,74 @@ alias vi='vim'
 alias py='python2'
 alias wicd='wicd-curses'
 alias wi='wicd-curses'
-alias conky ='sudo conky &'
-alias cpu='cpufreq-info'
-alias reboot='sudo reboot'
+#alias conky ='sudo conky &'
+alias bus='/filer/tmp2/contrib/bin/bus'
 
-minspeed=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_min_freq`
-maxspeed=`cat /sys/devices/system/cpu/cpu0/cpufreq/cpuinfo_max_freq`
-setspeed='/sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq'
 
-sudo chown samjalal:users /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-sudo chmod 777 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+###############################################################################################
 
-sudo chown samjalal:users /sys/devices/virtual/backlight/acpi_video0/brightness
-sudo chmod 777 /sys/devices/virtual/backlight/acpi_video0/brightness
 
-fast () {
-	echo 'You just made your computer superfast and bright but power hungry' ;
-	sudo echo -n 'performance' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;
-	#sudo echo -n '2100000' > $setspeed ;
-	sudo echo -n '4' > /sys/devices/virtual/backlight/acpi_video0/brightness ;
-}
 
-slow () {
-	echo 'You just made your computer slow but eco friendly mode, Captain Planet would be proud' ;
-	sudo echo -n 'conservative' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;
-	#sudo echo -n '1200000' > $setspeed ;
-	sudo echo -n '0' > /sys/devices/virtual/backlight/acpi_video0/brightness ;
-}
 
-avg () {
-	echo 'You just put your computer into avg brightness but superfast processing speed, Default Mode' ;
-	sudo echo -n 'ondemand' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;
-	#sudo echo -n '2100000' > $setspeed ;
-	sudo echo -n '2' > /sys/devices/virtual/backlight/acpi_video0/brightness ;
-}
 
-max () {
-	echo 'You just entered greedy mode, MAX POWAH!' ;
-	sudo echo -n 'performance' > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ;
-	#sudo echo -n '2100000' > $setspeed ;
-	sudo echo -n '7' > /sys/devices/virtual/backlight/acpi_video0/brightness ;
-}
+#export statements
+export PATH=$PATH:/filer/tmp2/contrib/bin:/usr/sbin:/sbin
+export PKG_CONFIG_PATH=$PKG_CONFIG_PATH:/filer/tmp2/contrib/lib/pkgconfig
+export EDITOR=vim
+export PS1="[\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]]\$ "
 
-alias s2='echo "Sleep mode initiated, get ready to SLEEP!" ; sleep 1 ; sudo s2both ; echo "Welcome back, babycakes!'
-alias s2both='echo "Sleep mode initiated, get ready to SLEEP!" ; sleep 1 ; sudo s2both ; echo "Welcome back, babycakes!'
+#program shortcuts
+alias stalk="~/.stalk w"
+alias fox="/filer/tmp2/contrib/bin/firefox"
+alias mp="/filer/tmp2/contrib/bin/mplayer"
+alias dp="/filer/tmp2/contrib/bin/linuxdcpp"
+alias box="~/.dropbox-dist/dropboxd"
+alias bashmod="vim ~/.bashrc"
+alias bashsave="source ~/.bashrc"
+alias vmod="vim ~/.vimrc"
+
+#aliases for book launching
+#alias physics="books;acroread Physics-Cutnell\,\ Johnson\ 8th\ Edition.pdf"
+#alias cs205="books;acroread Discrete\ Mathematics\ and\ its\ Applications\ -\ Rosen\ -\ 0-07-288008-2.pdf"
+#alias micro="books;acroread Microeconomics.4.pdf"
+#alias linear="books;acroread Elementary_Linear_Algebra__2nd_Edition_.pdf"
+
+#aliases for ls
+alias ls="ls --color=auto"
+alias lsd="ls --color=always -al | grep ^d"
+alias lf="ls --color=always -l | grep ^d"
+alias l="ls"
+alias s="l"
+alias la="ls -al"
+alias ll="ls -l"
+
+#aliases for random ops
+alias cc="clear"
+
+#aliases for directory navigation
+alias ..="cd .."
+#alias vi="vim"
+#alias v="vim"
+alias doc="cd ~/documents;ls"
+alias cs="cd ~/documents/cs211/pa2;ls"
+alias drop="cd /filer/tmp2/bilalq/Dropbox;ls"
+alias filer="cd /filer/tmp2"
+#alias contrib="cd /filer/tmp2/contrib;ls"
+#alias tmp="cd /filer/tmp2/bilalq;ls"
+#alias media="cd /filer/tmp2/contrib/media;ls"
+#alias books="cd /filer/tmp2/contrib/books;ls"
+#alias star="cd /filer/tmp2/bilalq/starlabs"
+alias me="cd ~;ls"
+
+#ssh aliases
+#alias dream="ssh ps61838.dreamhost.com"
+#alias facade="ssh facade"
+#alias ziti="ssh ziti"
+
+#[[ -s "/filer/tmp2/contrib/bin/.rvm/scripts/rvm" ]] && source "/filer/tmp2/contrib/bin/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+alias vimt='vim -c "NERDTree" $1'
+alias vit='vim -c "NERDTree" $1'
+alias vt='vim -c "NERDTree" $1'
+alias vi='vim'
+
+
