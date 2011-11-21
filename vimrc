@@ -49,7 +49,16 @@
     set tabpagemax=15       " only show 15 tabs
     set showmode            " display the current mode
 
-    colorscheme jellybeans  " Set the colorscheme
+    " Color schemes: {
+        colorscheme jellybeans  " Set the colorscheme
+        " colorscheme desert      " Set the colorscheme
+        " colorscheme inkpot      " Set the colorscheme
+        " colorscheme lettuce     " Set the colorscheme
+        " colorscheme rdark       " Set the colorscheme
+        " colorscheme sorcerer    " Set the colorscheme
+        " colorscheme wombat      " Set the colorscheme
+        " colorscheme zenburn     " Set the colorscheme
+    " }
 
     set cursorline                  " highlight current line
     hi cursorline guibg=#333333     " highlight bg color of current line
