@@ -38,6 +38,12 @@
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
 
+	" Split Window Management {
+		map - <C-W>-
+		map + <C-W>+
+		map = <C-W>=
+	" }
+
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
 
@@ -172,7 +178,7 @@
         set number                  " Set numbers to show
         set tabstop=4               " Set tab to skip 4 spaces
         set shiftwidth=4
-        set expandtab
+        " set expandtab
         syntax on
 
         set pastetoggle=<F2>        " Press F2 to paste
