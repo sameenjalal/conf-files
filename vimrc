@@ -7,6 +7,7 @@
 
 " Statusline {
     " Always hide the statusline
+	set nocompatible            " Lets you not have to worry about old Vi bugs
     set laststatus=2
 
     " Format the statusline
@@ -31,6 +32,8 @@
         map te :tabedit
         map tc :tabclose<cr>
         map tm :tabmove
+		map tp :tabprevious<cr>
+		map tx :tabnext<cr>
     "}
 
     " Shortcuts
@@ -104,67 +107,15 @@
         " set nofoldenable              " dont fold by default
         " set foldenable              " auto fold code
         " set foldlevel=1             " preference
-
-        function ToggleFold()
-           if foldlevel('.') == 0
-              " No fold exists at the current line,
-              " so create a fold based on indentation
- 
-              let l_min = line('.')   " the current line number
-              let l_max = line('$')   " the last line number
-              let i_min = indent('.') " the indentation of the current line
-              let l = l_min + 1
-
-              " Search downward for the last line whose indentation > i_min
-              while l <= l_max
-                 " if this line is not blank ...
-                 if strlen(getline(l)) > 0 && getline(l) !~ '^\s*$'
-                    if indent(l) <= i_min
-                       " we've gone too far
-                       let l = l - 1    " backtrack one line
-                       break
-                    endif
-                 endif
-                 let l = l + 1
-              endwhile
- 
-              " Clamp l to the last line
-              if l > l_max
-                 let l = l_max
-              endif
-
-              " Backtrack to the last non-blank line
-              while l > l_min
-                 if strlen(getline(l)) > 0 && getline(l) !~ '^\s*$'
-                    break
-                 endif
-                 let l = l - 1
-              endwhile
-
-              "execute "normal i" . l_min . "," . l . " fold"   " print debug info
- 
-              if l > l_min
-                 " Create the fold from l_min to l
-                 execute l_min . "," . l . " fold"
-              endif
-           else
-              " Delete the fold on the current line
-              normal zd
-           endif
-        endfunction
-
         nmap za :call ToggleFold()<CR>
     " }
 
     " Environment {
-        set nocompatible            " Lets you not have to worry about old Vi bugs
         filetype plugin indent on   " Automatically detect file types.
         syntax on                   " syntax highlighting
         set mouse=a                 " automatically enable mouse usage
         set autochdir               " always switch to the current file directory.. Messes with some plugins, best left commented out
         scriptencoding utf-8
-		set encoding=utf-8 			" Set the default file encoding to UTF-8: 
-
         set smartindent
         set smartcase
         set autoindent
@@ -223,62 +174,3 @@
         " map zr <Esc>:DisablePHPFolds<Cr> 
     " }
 " }
-
-" Python and C Settings {
-	" Number of spaces that a pre-existing tab is equal to.
-	" For the amount of space used for a new tab use shiftwidth.
-
-	au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
-
-	" What to use for an indent.
-	" This will affect Ctrl-T and 'autoindent'.
-	" Python: 4 spaces
-	" C: tabs (pre-existing files) or 4 spaces (new files)
-	au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
-	au BufRead,BufNewFile *.py,*.pyw set expandtab
-	fu Select_c_style()
-		if search('^\t', 'n', 150)
-			set shiftwidth=4
-			set noexpandtab
-		el 
-			set shiftwidth=4
-			set expandtab
-		en
-	endf
-	au BufRead,BufNewFile *.c,*.h call Select_c_style()
-	au BufRead,BufNewFile Makefile* set noexpandtab
-
-	" Use the below highlight group when displaying bad whitespace is desired.
-	highlight BadWhitespace ctermbg=red guibg=red
-
-	" Display tabs at the beginning of a line in Python mode as bad.
-	au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
-	" Make trailing whitespace be flagged as bad.
-	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-
-	" Wrap text after a certain number of characters
-	" Python: 79 
-	" C: 79
-	au BufRead,BufNewFile *.py,*.pyw,*.c,*.h set textwidth=79
-
-	" Turn off settings in 'formatoptions' relating to comment formatting.
-	" - c : do not automatically insert the comment leader when wrapping based on
-	"    'textwidth'
-	" - o : do not insert the comment leader when using 'o' or 'O' from command mode
-	" - r : do not insert the comment leader when hitting <Enter> in insert mode
-	" Python: not needed
-	" C: prevents insertion of '*' at the beginning of every line in a comment
-	au BufRead,BufNewFile *.c,*.h set formatoptions-=c formatoptions-=o formatoptions-=r
-
-	" Use UNIX (\n) line endings.
-	" Only used for new files so as to not force existing files to change their
-	" line endings.
-	" Python: yes
-	" C: yes
-	au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
-
-	" For full syntax highlighting:
-	let python_highlight_all=1
-	syntax on
-
-" } End Python and C settings
