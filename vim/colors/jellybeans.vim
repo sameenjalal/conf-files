@@ -445,6 +445,8 @@ if !s:low_color
   hi DiffText ctermbg=19
 endif
 
+hi link pythonOperator pythonRepeat
+
 " delete functions {{{
 delf s:X
 delf s:rgb

@@ -31,9 +31,10 @@
         map tn :tabnew<cr>
         map te :tabedit
         map tc :tabclose<cr>
-        map tm :tabmove
+        map tm :tabmove<cr>
 		map tp :tabprevious<cr>
 		map tx :tabnext<cr>
+		" use gt to switch between tabs
     "}
 
     " Shortcuts
