@@ -132,7 +132,7 @@
         set number                  " Set numbers to show
         set tabstop=4               " Set tab to skip 4 spaces
         set shiftwidth=4
-        " set expandtab
+        set expandtab
         syntax on
 
         set pastetoggle=<F2>        " Press F2 to paste
@@ -160,13 +160,12 @@
         command -nargs=0 OpenNERDTree :call OpenNERDTree()
 
         " NERDTree mappings
-        map <ESC>t :OpenNERDTree<CR>
-        map nt :NERDTree .<cr>
+        noremap <leader>t :NERDTreeToggle<CR>
     " }
 
     " Conque term mappings {
-        map bs :ConqueTermSplit bash<cr>
-        map bv :ConqueTermVSplit bash<cr>
+        map <leader>s :ConqueTermSplit bash<cr>
+        map <leader>v :ConqueTermVSplit bash<cr>
     " }
 
     " PhpFolding mappings {
@@ -174,4 +173,15 @@
         " map zm <Esc>:EnablePHPFolds<Cr>
         " map zr <Esc>:DisablePHPFolds<Cr> 
     " }
+
+	" Toggle Relative Numbers {
+		function! g:ToggleNuMode() 
+			if(&rnu == 1) 
+				set nu 
+			else 
+				set rnu 
+			endif 
+		endfunc
+		nnoremap <leader>nu :call g:ToggleNuMode()<cr> 
+	" }
 " }

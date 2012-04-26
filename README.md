@@ -24,6 +24,7 @@ Vim Customizations
 * ConqueTerm: Shell in vim
 * SyntaxFolds: Fold thingy
 * CloseTag: Close last opened HTML Tag
+* ToggleFold: Awesome folding folding
 
 
 ##Colorschemes##
@@ -35,4 +36,6 @@ Vim Customizations
 * sorcerer
 * wombat
 * zenburn
+* desert
+* rdark
 
