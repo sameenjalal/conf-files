@@ -25,6 +25,8 @@ Vim Customizations
 * SyntaxFolds: Fold thingy
 * CloseTag: Close last opened HTML Tag
 * ToggleFold: Awesome folding folding
+* Repeat: Repeat mapped commands with '.'
+* Commentary: Comment with '\\\'
 
 
 ##Colorschemes##
